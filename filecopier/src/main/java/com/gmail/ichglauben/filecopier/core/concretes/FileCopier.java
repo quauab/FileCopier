@@ -10,8 +10,10 @@ import java.nio.file.Path;
 import com.gmail.ichglauben.filecopier.core.utils.abstracts.CustomClass;
 import com.gmail.ichglauben.filecopier.core.utils.concretes.FileExtensionExtractor;
 import com.gmail.ichglauben.filecopier.core.utils.concretes.PathValidator;
+
 /**
  * The class provides a single static method - copy.
+ * 
  * @see java.nio
  * @see java.nio.channels.FileChannel
  * @see java.nio.file.Path
@@ -24,17 +26,20 @@ import com.gmail.ichglauben.filecopier.core.utils.concretes.PathValidator;
  */
 public class FileCopier extends CustomClass {
 	private static FileCopier copier = new FileCopier();
+
 	/**
 	 * Static method - makes a copy of the source at the destination
-	 * @param source The file to be copied
-	 * @param destination The copy of the source at the new location*/
+	 * 
+	 * @param source
+	 *            The file to be copied
+	 * @param destination
+	 *            The copy of the source at the new location
+	 */
 	public static void copy(String source, String destination) {
 		FileChannel input = null;
 		FileChannel output = null;
-		if ((null != source && null != destination) && (!source.equals("") && !destination.equals(""))
-				&& (source.length() > 0 && destination.length() > 0) && (PathValidator.isAFile(source))) {
-			if (destination.lastIndexOf(".") == -1)
-				destination += FileExtensionExtractor.extractExtension(source);
+		if (sourceFileIsValid(source, destination)) {
+			destination = checkExtension(source, destination);
 			try {
 				input = new FileInputStream(source).getChannel();
 				output = new FileOutputStream(destination).getChannel();
@@ -52,13 +57,29 @@ public class FileCopier extends CustomClass {
 			}
 		}
 	}
-	/**Single private constructor*/
+
+	private static String checkExtension(String source, String destination) {
+		if (destination.lastIndexOf(".") == -1)
+			destination += FileExtensionExtractor.extractExtension(source);
+		return destination;
+	}
+
+	private static boolean sourceFileIsValid(String source, String destination) {
+		return (null != source && null != destination) && (!source.equals("") && !destination.equals(""))
+				&& (source.length() > 0 && destination.length() > 0) && (PathValidator.isAFile(source));
+	}
+
+	/** Single private constructor */
 	private FileCopier() {
 		super();
 	}
+
 	/**
+	 * 
 	 * Returns an instance of this class.
-	 * @return FileCoper instance*/
+	 * 
+	 * @return FileCoper instance
+	 */
 	public static FileCopier getInstance() {
 		return copier;
 	}
