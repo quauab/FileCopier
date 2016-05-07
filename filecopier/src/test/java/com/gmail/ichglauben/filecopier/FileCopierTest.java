@@ -19,6 +19,7 @@ public class FileCopierTest extends CustomClass {
 		String dest = GlobalConstants.USRHOME + GlobalConstants.FILESEPARATOR + "wild";
 		
 		copier.copy(f2, dest);
+		copier.copy(f1, "salami");
 		
 		for (File file : new File(GlobalConstants.USRHOME).listFiles()) {
 			print(file.toPath().getFileName());
