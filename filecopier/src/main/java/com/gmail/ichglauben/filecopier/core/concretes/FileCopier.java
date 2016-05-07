@@ -10,10 +10,24 @@ import java.nio.file.Path;
 import com.gmail.ichglauben.filecopier.core.utils.abstracts.CustomClass;
 import com.gmail.ichglauben.filecopier.core.utils.concretes.FileExtensionExtractor;
 import com.gmail.ichglauben.filecopier.core.utils.concretes.PathValidator;
-
+/**
+ * The class provides a single static method - copy.
+ * @see java.nio
+ * @see java.nio.channels.FileChannel
+ * @see java.nio.file.Path
+ * @see java.io.File;
+ * @see java.io.FileInputStream;
+ * @see java.io.FileOutputStream;
+ * @author Rick Walker
+ * @version 0.1
+ * @since 5/7/2016
+ */
 public class FileCopier extends CustomClass {
 	private static FileCopier copier = new FileCopier();
-
+	/**
+	 * Static method - makes a copy of the source at the destination
+	 * @param source The file to be copied
+	 * @param destination The copy of the source at the new location*/
 	public static void copy(String source, String destination) {
 		FileChannel input = null;
 		FileChannel output = null;
@@ -38,11 +52,13 @@ public class FileCopier extends CustomClass {
 			}
 		}
 	}
-
+	/**Single private constructor*/
 	private FileCopier() {
 		super();
 	}
-
+	/**
+	 * Returns an instance of this class.
+	 * @return FileCoper instance*/
 	public static FileCopier getInstance() {
 		return copier;
 	}
