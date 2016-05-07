@@ -62,7 +62,8 @@ public class FileCopier extends CustomClass {
 	 * file path has no extension, this method will add the source's extension
 	 * to the end of the destination file path.
 	 * @param source The file to be copied
-	 * @param destination The copy of the source file at the new location*/
+	 * @param destination The copy of the source file at the new location
+	 * @return String The destination for the copied file*/
 	private static String checkExtension(String source, String destination) {
 		if (destination.lastIndexOf(".") == -1)
 			destination += FileExtensionExtractor.extractExtension(source);
@@ -71,8 +72,8 @@ public class FileCopier extends CustomClass {
 	
 	/**
 	 * Checks the parameters for the copy method.
-	 * @param source
-	 * @param destination
+	 * @param source The file to copy
+	 * @param destination The new location for the copied source file
 	 * @return true if, and only if, both parameters are valid*/
 	private static boolean paramsAreValid(String source, String destination) {
 		return (null != source && null != destination) && (!source.equals("") && !destination.equals(""))
