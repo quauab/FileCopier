@@ -17,9 +17,9 @@ import com.gmail.ichglauben.filecopier.core.utils.concretes.PathValidator;
  * @see java.nio
  * @see java.nio.channels.FileChannel
  * @see java.nio.file.Path
- * @see java.io.File;
- * @see java.io.FileInputStream;
- * @see java.io.FileOutputStream;
+ * @see java.io.File
+ * @see java.io.FileInputStream
+ * @see java.io.FileOutputStream
  * @author Rick Walker
  * @version 0.1
  * @since 5/7/2016
