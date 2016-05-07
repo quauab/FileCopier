@@ -58,12 +58,23 @@ public class FileCopier extends CustomClass {
 		}
 	}
 
+	/**
+	 * Returns the absolute path for the destination. If the destination
+	 * file path has no extension, this method will add the source's extension
+	 * to the end of the destination file path.
+	 * @param source The file to be copied
+	 * @param destination The copy of the source file at the new location*/
 	private static String checkExtension(String source, String destination) {
 		if (destination.lastIndexOf(".") == -1)
 			destination += FileExtensionExtractor.extractExtension(source);
 		return destination;
 	}
-
+	
+	/**
+	 * Checks the parameters for the copy method.
+	 * @param source
+	 * @param destination
+	 * @return true if, and only if, both parameters are valid*/
 	private static boolean paramsAreValid(String source, String destination) {
 		return (null != source && null != destination) && (!source.equals("") && !destination.equals(""))
 				&& (source.length() > 0 && destination.length() > 0) && (PathValidator.isAFile(source));
