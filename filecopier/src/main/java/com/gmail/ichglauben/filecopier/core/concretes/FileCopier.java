@@ -13,7 +13,6 @@ import com.gmail.ichglauben.filecopier.core.utils.concretes.PathValidator;
 
 /**
  * The class provides a single static method - copy.
- * 
  * @see java.nio
  * @see java.nio.channels.FileChannel
  * @see java.nio.file.Path
