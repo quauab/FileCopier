@@ -38,7 +38,7 @@ public class FileCopier extends CustomClass {
 	public static void copy(String source, String destination) {
 		FileChannel input = null;
 		FileChannel output = null;
-		if (sourceFileIsValid(source, destination)) {
+		if (paramsAreValid(source, destination)) {
 			destination = checkExtension(source, destination);
 			try {
 				input = new FileInputStream(source).getChannel();
@@ -64,7 +64,7 @@ public class FileCopier extends CustomClass {
 		return destination;
 	}
 
-	private static boolean sourceFileIsValid(String source, String destination) {
+	private static boolean paramsAreValid(String source, String destination) {
 		return (null != source && null != destination) && (!source.equals("") && !destination.equals(""))
 				&& (source.length() > 0 && destination.length() > 0) && (PathValidator.isAFile(source));
 	}
