@@ -23,5 +23,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="D:/_/Dropbox/Private/development/desktop/java/_demos/maven/libs/pathvalidator.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

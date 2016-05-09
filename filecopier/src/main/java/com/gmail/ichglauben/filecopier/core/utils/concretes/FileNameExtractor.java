@@ -4,6 +4,8 @@ import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import com.gmail.ichglauben.pathvalidator.core.concretes.PathValidator;
+
 public class FileNameExtractor {
 	public static String extract(String fileName) {
 		if (null != fileName && fileName.length() > 0) {

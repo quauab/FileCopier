@@ -1,18 +1,16 @@
 package com.gmail.ichglauben.filecopier.core.concretes;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
-import java.nio.file.Path;
 
 import com.gmail.ichglauben.filecopier.core.utils.abstracts.CustomClass;
 import com.gmail.ichglauben.filecopier.core.utils.concretes.FileExtensionExtractor;
-import com.gmail.ichglauben.filecopier.core.utils.concretes.PathValidator;
+import com.gmail.ichglauben.pathvalidator.core.concretes.PathValidator;
 
 /**
- * The class provides a single static method - copy.
+ * Use this class to create a copy of a file in a different location. This class provides 1 static method.
  * @see java.nio
  * @see java.nio.channels.FileChannel
  * @see java.nio.file.Path
@@ -27,8 +25,7 @@ public class FileCopier extends CustomClass {
 	private static FileCopier copier = new FileCopier();
 
 	/**
-	 * Static method - makes a copy of the source at the destination
-	 * 
+	 * Use this method to make a copy of the source at the destination.
 	 * @param source
 	 *            The file to be copied
 	 * @param destination
@@ -58,9 +55,8 @@ public class FileCopier extends CustomClass {
 	}
 
 	/**
-	 * Returns the absolute path for the destination. If the destination
-	 * file path has no extension, this method will add the source's extension
-	 * to the end of the destination file path.
+	 * This method is used internally to fix the extension of the destination
+	 * file path if it's invalid.
 	 * @param source The file to be copied
 	 * @param destination The copy of the source file at the new location
 	 * @return String The destination for the copied file*/
@@ -71,7 +67,8 @@ public class FileCopier extends CustomClass {
 	}
 	
 	/**
-	 * Checks the parameters for the copy method.
+	 * This method is used internally to validate the source and destination parameters
+	 * for the copy method.
 	 * @param source The file to copy
 	 * @param destination The new location for the copied source file
 	 * @return true if, and only if, both parameters are valid*/
@@ -85,12 +82,8 @@ public class FileCopier extends CustomClass {
 		super();
 	}
 
-	/**
-	 * 
-	 * Returns an instance of this class.
-	 * 
-	 * @return FileCoper instance
-	 */
+	/**Use this method to assign an instance of this class to a variable. 
+	 * @return FileCoper instance*/
 	public static FileCopier getInstance() {
 		return copier;
 	}
