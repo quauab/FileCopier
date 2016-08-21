@@ -10,15 +10,15 @@ import com.gmail.ichglauben.filecopier.core.utils.concretes.FileExtensionExtract
 import com.gmail.ichglauben.pathvalidator.core.concretes.PathValidator;
 
 /**
- * Use this class to create a copy of a file in a different location. This class provides 1 static method.
+ * Use this class to create a copy of a source file at a different location.<br>This class provides 1 static method to accomplish this task.<br>
+ * <i>If the destination file path does not end with an extension, the copy method will add the source file's extension.</i>
  * @see java.nio
  * @see java.nio.channels.FileChannel
  * @see java.nio.file.Path
  * @see java.io.File
  * @see java.io.FileInputStream
  * @see java.io.FileOutputStream
- * @see com.gmail.ichglauben.pathvalidator.core.concretes.PathValidator
- * @author Rick Walker
+ * @author <i>Rick Walker</i>
  * @version 0.1
  * @since 5/7/2016
  */
@@ -26,11 +26,12 @@ public class FileCopier extends CustomClass {
 	private static FileCopier copier = new FileCopier();
 
 	/**
-	 * Use this method to make a copy of the source at the destination.
+	 * Use this method to create a copy of the file as provided by the source parameter<br>
+	 * at the new location as provided by the destination parameter.
 	 * @param source
-	 *            The file to be copied
+	 *            <b><i>String</i></b> The file to be copied
 	 * @param destination
-	 *            The copy of the source at the new location
+	 *            <b><i>String</i></b> The copy of the source at the new location
 	 */
 	public static void copy(String source, String destination) {
 		FileChannel input = null;
@@ -56,11 +57,12 @@ public class FileCopier extends CustomClass {
 	}
 
 	/**
-	 * This method is used internally to fix the extension of the destination
-	 * file path if it's invalid.
-	 * @param source The file to be copied
+	 * This method is used internally by the copy method to check if<br> 
+	 * the destination parameter has an extension at the end of it's path.<br>
+	 * If it doesn't, this method will add the source's extension.
+	 * @param source <b><i>String</i></b> The file to be copied
 	 * @param destination The copy of the source file at the new location
-	 * @return String The destination for the copied file*/
+	 * @return String <b><i>String</i></b> The destination for the copied file*/
 	private static String checkExtension(String source, String destination) {
 		if (destination.lastIndexOf(".") == -1)
 			destination += FileExtensionExtractor.extractExtension(source);
@@ -68,10 +70,10 @@ public class FileCopier extends CustomClass {
 	}
 	
 	/**
-	 * This method is used internally to validate the source and destination parameters
-	 * for the copy method.
-	 * @param source The file to copy
-	 * @param destination The new location for the copied source file
+	 * This method is used internally by the copy method to check that it's
+	 * parameters are valid.
+	 * @param source <b><i>String</i></b> The source file to copy
+	 * @param destination <b><i>String</i></b> The new location for the copied source file
 	 * @return true if, and only if, both parameters are valid*/
 	private static boolean paramsAreValid(String source, String destination) {
 		return (null != source && null != destination) && (!source.equals("") && !destination.equals(""))
@@ -84,7 +86,7 @@ public class FileCopier extends CustomClass {
 	}
 
 	/**Use this method to assign an instance of this class to a variable. 
-	 * @return FileCoper instance*/
+	 * @return FileCopier instance*/
 	public static FileCopier getInstance() {
 		return copier;
 	}
