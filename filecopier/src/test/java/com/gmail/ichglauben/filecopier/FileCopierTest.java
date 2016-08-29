@@ -14,18 +14,19 @@ import com.gmail.ichglauben.filecopier.core.utils.concretes.GlobalConstants;
 public class FileCopierTest extends CustomClass {
 	ClassLoader loader = getClass().getClassLoader();
 	FileCopier copier = FileCopier.getInstance();
- String uh = GlobalConstants.USRHOME;
- 	File lynx = new File(loader.getResource("lynx.jpg").getFile());
- 	File tiger = new File(loader.getResource("tiger.jpg").getFile());
+	String uh = GlobalConstants.USRHOME;
+	File lynx = new File(loader.getResource("lynx.jpg").getFile());
+	File tiger = new File(loader.getResource("tiger.jpg").getFile());
 	 
 	@Test
 	public void testCopyMethod() {
 		String lynxDestination = uh + lynx.toPath().getFileName().toString();
+		
 		String tigerDestination = uh + tiger.toPath().getFileName().toString();
 				
 		copier.copy(lynx.getAbsolutePath(), lynxDestination);
-		copier.copy(tiger.getAbsolutePath(), tigerDestination);		
 		
+		copier.copy(tiger.getAbsolutePath(), tigerDestination);				
 	}
 
 }
