@@ -69,7 +69,7 @@ public class FileCopier extends CustomClass {
 		return destination;
 	}
 	
-	/**This method check if destination already exists.
+	/**This method checks if destination already exists.
 	 * @param destination String The copy destination
 	 * @return destination String*/
 	private static String checkDestinationExists(String destination) {
