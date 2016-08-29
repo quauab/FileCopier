@@ -1,5 +1,5 @@
 # File Copier
-Copy files to any destination directory.
+Copy files to any directory.
 
 <h2>Installation</h2>
 <ol>
