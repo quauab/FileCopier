@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import com.gmail.ichglauben.filecopier.core.utils.abstracts.CustomClass;
 import com.gmail.ichglauben.filecopier.core.utils.concretes.FileExtensionExtractor;
@@ -64,12 +66,13 @@ public class FileCopier extends CustomClass {
 	 * @param destination The copy of the source file at the new location
 	 * @return String <b><i>String</i></b> The destination for the copied file*/
 	private static String checkExtension(String source, String destination) {
+		if (PathValidator.pathExists(destination))
+			try {
+				Files.delete(Paths.get(destination));
+			} catch (IOException ioe) {}
+		
 		if (destination.lastIndexOf(".") == -1)
 			destination += FileExtensionExtractor.extractExtension(source);
-		if (!FileExtensionExtractor.extractExtension(source).equals(FileExtensionExtractor.extractExtension(destination))) {
-			destination = destination.substring(0,destination.lastIndexOf("."));
-			destination += FileExtensionExtractor.extractExtension(source);
-		}
 		return destination;
 	}
 	
