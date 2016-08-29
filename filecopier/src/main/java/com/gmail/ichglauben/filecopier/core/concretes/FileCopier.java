@@ -66,6 +66,10 @@ public class FileCopier extends CustomClass {
 	private static String checkExtension(String source, String destination) {
 		if (destination.lastIndexOf(".") == -1)
 			destination += FileExtensionExtractor.extractExtension(source);
+		if (!FileExtensionExtractor.extractExtension(source).equals(FileExtensionExtractor.extractExtension(destination))) {
+			destination = destination.substring(0,destination.lastIndexOf("."));
+			destination += FileExtensionExtractor.extractExtension(source);
+		}
 		return destination;
 	}
 	
