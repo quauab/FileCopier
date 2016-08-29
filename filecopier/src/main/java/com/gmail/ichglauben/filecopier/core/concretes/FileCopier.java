@@ -27,13 +27,10 @@ import com.gmail.ichglauben.pathvalidator.core.concretes.PathValidator;
 public class FileCopier extends CustomClass {
 	private static FileCopier copier = new FileCopier();
 
-	/**
-	 * Use this method to create a copy of the file as provided by the source parameter<br>
-	 * at the new location as provided by the destination parameter.
-	 * @param source
-	 *            <b><i>String</i></b> The file to be copied
+	/**@param source
+	 *            The file to be copied
 	 * @param destination
-	 *            <b><i>String</i></b> The copy of the source at the new location
+	 *            The copied file destination
 	 */
 	public static void copy(String source, String destination) {
 		FileChannel input = null;
@@ -59,9 +56,7 @@ public class FileCopier extends CustomClass {
 	}
 
 	/**
-	 * This method is used internally by the copy method to check if<br> 
-	 * the destination parameter has an extension at the end of it's path.<br>
-	 * If it doesn't, this method will add the source's extension.
+	 * This method deletes the file at the destination address, if it exists.
 	 * @param source <b><i>String</i></b> The file to be copied
 	 * @param destination The copy of the source file at the new location
 	 * @return String <b><i>String</i></b> The destination for the copied file*/
@@ -77,8 +72,7 @@ public class FileCopier extends CustomClass {
 	}
 	
 	/**
-	 * This method is used internally by the copy method to check that it's
-	 * parameters are valid.
+	 * This method checks the parameters.
 	 * @param source <b><i>String</i></b> The source file to copy
 	 * @param destination <b><i>String</i></b> The new location for the copied source file
 	 * @return true if, and only if, both parameters are valid*/
@@ -92,7 +86,7 @@ public class FileCopier extends CustomClass {
 		super();
 	}
 
-	/**Use this method to assign an instance of this class to a variable. 
+	/**This method returns an instance of this class. 
 	 * @return FileCopier instance*/
 	public static FileCopier getInstance() {
 		return copier;
