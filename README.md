@@ -8,4 +8,4 @@ Copy files to any destination directory.
 </ul>
 
 <h2>Motivation</h2>
-Worked previous projects that needed ability to copy a file and to create incremented numbered copies, if that file existed.
+Worked previous projects that needed ability to copy a file and to create an incremented numbered copy if that copy existed.
