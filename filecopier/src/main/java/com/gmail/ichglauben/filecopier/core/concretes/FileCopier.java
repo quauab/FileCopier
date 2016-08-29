@@ -1,14 +1,17 @@
 package com.gmail.ichglauben.filecopier.core.concretes;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
-import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import com.gmail.ichglauben.filecopier.core.utils.abstracts.CustomClass;
 import com.gmail.ichglauben.filecopier.core.utils.concretes.FileExtensionExtractor;
+import com.gmail.ichglauben.filecopier.core.utils.concretes.FileNameExtractor;
+import com.gmail.ichglauben.filecopier.core.utils.concretes.GlobalConstants;
 import com.gmail.ichglauben.pathvalidator.core.concretes.PathValidator;
 
 /**
@@ -36,6 +39,7 @@ public class FileCopier extends CustomClass {
 		FileChannel output = null;
 		if (paramsAreValid(source, destination)) {
 			destination = checkExtension(source, destination);
+			destination = checkDestinationExists(destination);
 			try {
 				input = new FileInputStream(source).getChannel();
 				output = new FileOutputStream(destination).getChannel();
@@ -55,18 +59,43 @@ public class FileCopier extends CustomClass {
 	}
 
 	/**
-	 * This method deletes the file at the destination address, if it exists.
+	 * This method fixes the destination's extension if missing.
 	 * @param source <b><i>String</i></b> The file to be copied
 	 * @param destination The copy of the source file at the new location
 	 * @return String <b><i>String</i></b> The destination for the copied file*/
-	private static String checkExtension(String source, String destination) {
-		if (PathValidator.pathExists(destination))
-			try {
-				Files.delete(Paths.get(destination));
-			} catch (IOException ioe) {}
-		
+	private static String checkExtension(String source, String destination) {		
 		if (destination.lastIndexOf(".") == -1)
 			destination += FileExtensionExtractor.extractExtension(source);
+		return destination;
+	}
+	
+	/**This method check if destination already exists.
+	 * @param destination String The copy destination
+	 * @return destination String*/
+	private static String checkDestinationExists(String destination) {
+		int howMany = 0;
+		Path path = Paths.get(destination);
+		String dir = path.getParent().toString() + GlobalConstants.FILESEPARATOR;
+		String fileName = FileNameExtractor.extract(destination);
+		String fileExt = FileExtensionExtractor.extractExtension(destination);
+		
+		if (PathValidator.pathExists(dir + fileName + fileExt)) {
+			howMany += 1;
+		}
+		
+		for (File f:new File(dir).listFiles()) {
+			if (f.getAbsolutePath().equals(dir + fileName + "_copy" + (howMany + 1) + fileExt))
+				howMany += 1;
+		}
+		
+		switch (howMany) {
+		case 0:
+			return destination;
+		
+			default:
+				destination = dir + fileName + "_copy" + (howMany + 1) + fileExt;
+		}
+		
 		return destination;
 	}
 	
