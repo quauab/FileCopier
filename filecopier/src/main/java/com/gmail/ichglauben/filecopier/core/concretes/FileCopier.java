@@ -12,8 +12,7 @@ import com.gmail.ichglauben.filecopier.core.utils.concretes.FileExtensionExtract
 import com.gmail.ichglauben.pathvalidator.core.concretes.PathValidator;
 
 /**
- * Use this class to create a copy of a source file at a different location.<br>This class provides 1 static method to accomplish this task.<br>
- * <i>If the destination file path does not end with an extension, the copy method will add the source file's extension.</i>
+ * Copy a file.
  * @see java.nio
  * @see java.nio.channels.FileChannel
  * @see java.nio.file.Path
