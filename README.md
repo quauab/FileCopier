@@ -1,6 +1,14 @@
 # File Copier
 Copy files to any destination directory.
 
+<h2>Installation</h2>
+<ol>
+  <li>Download project's zip</li>
+  <li>Compile project</li>
+  <li>Generate jar library</li>
+  <li>Add jar as external library</li>
+</ol>
+
 <h2>Dependencies</h2>
 <ul>
   <li><a href="https://github.com/quauab/FileNameExtractor">FileNameExtractor</a></li>
