@@ -84,7 +84,7 @@ public class FileCopier extends CustomClass {
 		}
 		
 		for (File f:new File(dir).listFiles()) {
-			if (f.getAbsolutePath().equals(dir + fileName + "_copy" + (howMany + 1) + fileExt))
+			if (f.getAbsolutePath().equals(dir + fileName + (howMany + 1) + fileExt))
 				howMany += 1;
 		}
 		
@@ -93,7 +93,7 @@ public class FileCopier extends CustomClass {
 			return destination;
 		
 			default:
-				destination = dir + fileName + "_copy" + (howMany + 1) + fileExt;
+				destination = dir + fileName + (howMany + 1) + fileExt;
 		}
 		
 		return destination;
