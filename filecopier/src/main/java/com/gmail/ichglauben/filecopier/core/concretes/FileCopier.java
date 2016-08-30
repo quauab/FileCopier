@@ -92,8 +92,9 @@ public class FileCopier extends CustomClass {
 		case 0:
 			return destination;
 		
-			default:
-				destination = dir + fileName + (howMany + 1) + fileExt;
+		default:
+			destination = dir + fileName + (howMany += 1) + fileExt;
+			break;
 		}
 		
 		return destination;
