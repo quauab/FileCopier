@@ -20,7 +20,7 @@ public abstract class CustomClass {
 		super();
 	}
 
-	public static void error(Exception e) {
+	protected static void error(Exception e) {
 		if (null != e) {
 			String local_message = e.getLocalizedMessage();
 			String message = e.getMessage();
@@ -40,28 +40,16 @@ public abstract class CustomClass {
 		return;
 	}
 
-	public static void print(String string) {
-		if (null != string) {
-			if (!new String(string).isEmpty()) {
-				System.out.println(string);
-			}
-		}
+	protected static void print(Object o) {
+		System.out.print(String.valueOf(o));
+	}
+	
+	protected static void println(Object o) {
+		System.out.println(String.valueOf(o));
 	}
 
-	public static void print(Object string) {
-		String temp = null;
-		if (null != (temp = String.valueOf(string))) {
-			print(temp);
-		} else if (null == temp) {
-			try {
-				temp = string.toString();
-			} catch (Exception exception) {
-				return;
-			}
-		}
-	}
 
-	public static List<String> makeList(Map<String, String> hash) {
+	protected static List<String> makeList(Map<String, String> hash) {
 		List list = null;
 
 		if (null != hash) {
@@ -77,13 +65,13 @@ public abstract class CustomClass {
 		return list;
 	}
 
-	public static void alert(Object msg) {
+	protected static void alert(Object msg) {
 		Object[] options = { "Acknowledge" };
 		int n = javax.swing.JOptionPane.showOptionDialog(null, String.valueOf(msg), "Alert",
 				javax.swing.JOptionPane.OK_OPTION, javax.swing.JOptionPane.PLAIN_MESSAGE, icon, options, options[0]);
 	}
 
-	public static String stamp() {
+	protected static String stamp() {
 		Calendar now = Calendar.getInstance();
 		int year = now.get(Calendar.YEAR);
 		int mon = now.get(Calendar.MONTH) + 1;
@@ -101,7 +89,7 @@ public abstract class CustomClass {
 		return date;
 	}
 
-	public static void detectPlatform() {
+	protected static void detectPlatform() {
 		final String os = FileSystemConstants.OS;
 		String windows = ".*windows.*";
 		String linux = ".*linux.*";
@@ -191,7 +179,7 @@ public abstract class CustomClass {
 		}
 	}
 
-	private static javax.swing.ImageIcon createImageIcon(String path) {
+	protected static javax.swing.ImageIcon createImageIcon(String path) {
 		java.net.URL imgURL = CustomClass.class.getResource(path);
 		if (imgURL != null) {
 			return new javax.swing.ImageIcon(imgURL);
@@ -205,7 +193,7 @@ public abstract class CustomClass {
 		return "Custom Utilities";
 	}
 
-	private final static class PlatformConstants {
+	protected final static class PlatformConstants {
 		public final static String GTK = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
 		public final static String LINUX = "com.sun.java.swing.plat.linux.LinuxLookAndFeel";
 		public final static String WIN = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
@@ -215,7 +203,7 @@ public abstract class CustomClass {
 		public final static String NIMBUS = "javax.swing.plaf.nimbus.NimbusLookAndFeel";
 	}
 
-	private final static class FileSystemConstants {
+	protected final static class FileSystemConstants {
 		public final static String OS = System.getProperty("os.name").toLowerCase();
 		public final static String OS_ARCH = System.getProperty("os.arch").toLowerCase();
 		public final static String OS_VERSION = System.getProperty("os.version").toLowerCase();
