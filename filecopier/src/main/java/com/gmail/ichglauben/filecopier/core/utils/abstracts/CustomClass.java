@@ -48,7 +48,6 @@ public abstract class CustomClass {
 		System.out.println(String.valueOf(o));
 	}
 
-
 	protected static List<String> makeList(Map<String, String> hash) {
 		List list = null;
 
@@ -108,7 +107,7 @@ public abstract class CustomClass {
 		}
 	}
 
-	private static void setDefaultLookAndFeel() {
+	protected static void setDefaultLookAndFeel() {
 		try {
 			UIManager.setLookAndFeel(PlatformConstants.METAL);
 			return;
@@ -123,7 +122,7 @@ public abstract class CustomClass {
 		}
 	}
 
-	private static void setGtkLookAndFeel() {
+	protected static void setGtkLookAndFeel() {
 		try {
 			UIManager.setLookAndFeel(PlatformConstants.GTK);
 			return;
@@ -138,7 +137,7 @@ public abstract class CustomClass {
 		}
 	}
 
-	private static void setLinuxLookAndFeel() {
+	protected static void setLinuxLookAndFeel() {
 		try {
 			UIManager.setLookAndFeel(PlatformConstants.LINUX);
 			return;
@@ -153,7 +152,7 @@ public abstract class CustomClass {
 		}
 	}
 
-	private static void setWindowsLookAndFeel() {
+	protected static void setWindowsLookAndFeel() {
 		try {
 			UIManager.setLookAndFeel(PlatformConstants.WIN);
 			return;
