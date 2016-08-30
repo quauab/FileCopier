@@ -1,5 +1,5 @@
 # File Copier
-Make copies of files.
+Copy a file.
 
 <h2>Installation</h2>
 <ol>
