@@ -28,5 +28,14 @@ public class FileCopierTest extends CustomClass {
 		
 		copier.copy(tiger.getAbsolutePath(), tigerDestination);				
 	}
+	
+	@Test
+	public void testCopyMethodMakeFileCopies() {
+		String lynxDestination = uh + lynx.toPath().getFileName().toString();
+				
+		for (int i = 0; i<13; i++) {
+			copier.copy(lynx.getAbsolutePath(), lynxDestination);
+		}
+	}
 
 }

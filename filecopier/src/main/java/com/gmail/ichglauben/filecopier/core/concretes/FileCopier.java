@@ -93,7 +93,7 @@ public class FileCopier extends CustomClass {
 			return destination;
 		
 		default:
-			destination = dir + fileName + (howMany += 1) + fileExt;
+			destination = dir + fileName + (howMany + 1) + fileExt;
 			break;
 		}
 		
