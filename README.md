@@ -22,4 +22,4 @@ Worked previous projects that needed ability to copy a file and to create an inc
 There's a copy limit of up to 9.
 
 <h2>TODO</h2>
-Break the copy limit
+Research and break the copy limit, if possible.
