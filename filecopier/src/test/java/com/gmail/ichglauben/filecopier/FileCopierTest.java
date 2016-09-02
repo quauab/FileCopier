@@ -19,12 +19,8 @@ public class FileCopierTest extends CustomClass {
 	File tiger = new File(loader.getResource("tiger.jpg").getFile());
 	 
 	@Test
-	public void testCopyMethod() {
-		String lynxDestination = uh + lynx.toPath().getFileName().toString();
-		
+	public void testCopyMethod() {		
 		String tigerDestination = uh + tiger.toPath().getFileName().toString();
-				
-		copier.copy(lynx.getAbsolutePath(), lynxDestination);
 		
 		copier.copy(tiger.getAbsolutePath(), tigerDestination);				
 	}
